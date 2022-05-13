@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="2.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{08F169F0-D852-43BB-A367-40CE9C78B4F7}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Zeyo.FFOTagKiller</RootNamespace>
+    <AssemblyName>Zeyo.FFOTagKiller</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <NoWin32Manifest>False</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common" />
+    <Folder Include="Core" />
+    <Folder Include="Dialogs" />
+    <Folder Include="Contexts" />
+    <Folder Include="Resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Config.cs" />
+    <Compile Include="Common\ProcessObject.cs" />
+    <Compile Include="Common\ProcessObjectManager.cs" />
+    <Compile Include="Common\WinAPI.cs" />
+    <Compile Include="Common\WinAPI.Handle.cs">
+      <DependentUpon>WinAPI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WinAPI.PrivateProfile.cs">
+      <DependentUpon>WinAPI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WinAPI.Process.cs">
+      <DependentUpon>WinAPI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WinAPI.ProcessHandle.cs">
+      <DependentUpon>WinAPI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WinAPI.Query.cs">
+      <DependentUpon>WinAPI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\FFOTag.cs" />
+    <Compile Include="Dialogs\SettingsDialog.cs" />
+    <Compile Include="Dialogs\SettingsDialog.Designer.cs">
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\MainContext.cs" />
+    <Compile Include="Contexts\MainContext.Designer.cs">
+      <DependentUpon>MainContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <EmbeddedResource Include="Resources\app.ico" />
+    <EmbeddedResource Include="Resources\FFOTagKiller.ini">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
